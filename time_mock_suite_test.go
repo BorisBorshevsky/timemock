@@ -24,10 +24,6 @@ var _ = Describe("clock", func() {
 		stubTime = time.Unix(1522549800, 0) //Human time (GMT): Sunday, April 1, 2018 2:30:00 AM
 	})
 
-	AfterEach(func() {
-
-	})
-
 	Describe("Freeze", func() {
 		Context("when freezing time", func() {
 			BeforeEach(func() {
@@ -106,6 +102,19 @@ var _ = Describe("clock", func() {
 
 			})
 		})
+	})
+
+	Describe("Scale", func() {
+		var scale float64 = 60
+
+		It("should make time run faster", func() {
+			beforeScale := subject.Now()
+			subject.Scale(scale)
+			time.Sleep(time.Second)
+			Ω(subject.Now()).Should(BeTemporally("~", beforeScale.Add(time.Minute), time.Second))
+
+		})
+
 	})
 
 	Describe("Since", func() {

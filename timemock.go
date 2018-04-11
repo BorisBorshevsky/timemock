@@ -20,18 +20,22 @@ type timemockClock struct {
 
 func (c *timemockClock) Scale(scale float64) {
 	c.scale = scale
+	if !c.traveled {
+		c.Travel(now())
+	}
 }
 
 func (c *timemockClock) Now() time.Time {
-	if c.frozen {
+	if c.frozen || c.traveled {
 		c.rw.RLock()
 		defer c.rw.RUnlock()
+	}
+
+	if c.frozen {
 		return c.freezeTime
 	}
 
 	if c.traveled {
-		c.rw.RLock()
-		defer c.rw.RUnlock()
 		return c.freezeTime.Add(time.Duration(float64(time.Since(c.travelTime)) * c.scale))
 	}
 
@@ -49,7 +53,7 @@ func (c *timemockClock) Travel(t time.Time) {
 	c.rw.Lock()
 	defer c.rw.Unlock()
 	c.freezeTime = t
-	c.travelTime = time.Now()
+	c.travelTime = now()
 	c.traveled = true
 }
 
