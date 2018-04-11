@@ -1,0 +1,19 @@
+language: go
+
+go:
+  - 1.7.5
+  - 1.8.5
+  - 1.9.2
+  - "1.10"
+install:
+  - go get -u honnef.co/go/tools/cmd/gosimple
+  - go get -u github.com/mdempsky/unconvert
+  - go get -u github.com/gordonklaus/ineffassign
+  - go get -u github.com/golang/lint/golint
+script:
+  - ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --compilers=2
+  - gosimple  $(go list ./... | grep -v /vendor/)
+  - unconvert $(go list ./... | grep -v /vendor/)
+  - ineffassign .
+  - find . ! \( -path './vendor' -prune \) -type f -name '*.go' -print0 | xargs -0 gofmt -l -s
+
