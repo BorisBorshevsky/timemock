@@ -1,5 +1,5 @@
 # timemock
-[![Build Status](https://travis-ci.org/BorisBorshevsky/time-mock.svg?branch=master)](https://travis-ci.org/BorisBorshevsky/time-mock)
+[![Build Status](https://travis-ci.org/BorisBorshevsky/timemock.svg?branch=master)](https://travis-ci.org/BorisBorshevsky/timemock)
 
 Inspired by [Timecop](https://github.com/travisjeffery/timecop) Ruby Gem.
 It provides methods for Freezing time, Traveling in time, and scaling time for testing.
