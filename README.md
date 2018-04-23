@@ -4,7 +4,7 @@ Inspired by [Timecop](https://github.com/travisjeffery/timecop) Ruby Gem.
 It provides methods for Freezing time, Traveling in time, and scaling time for testing.
 
 ## Motivation
-Since in golang we cant override time package function for mock purposes 
+Since in golang we can't override time package functions for mock purposes, there needed another solution to mock time.
  
 ## Install
 ```bash
