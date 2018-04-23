@@ -12,7 +12,7 @@ install:
   - go get -u github.com/gordonklaus/ineffassign
   - go get -u github.com/golang/lint/golint
 script:
-  - ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --compilers=2
+  - ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --compilers=2 -coverprofile=coverage.txt -covermode=atomic
   - gosimple  $(go list ./... | grep -v /vendor/)
   - unconvert $(go list ./... | grep -v /vendor/)
   - ineffassign .
