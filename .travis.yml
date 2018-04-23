@@ -6,6 +6,7 @@ go:
   - 1.9.2
   - "1.10"
 install:
+  - go get -u github.com/onsi/ginkgo/ginkgo
   - go get -u honnef.co/go/tools/cmd/gosimple
   - go get -u github.com/mdempsky/unconvert
   - go get -u github.com/gordonklaus/ineffassign
