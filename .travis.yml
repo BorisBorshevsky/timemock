@@ -17,3 +17,5 @@ script:
   - ineffassign .
   - find . ! \( -path './vendor' -prune \) -type f -name '*.go' -print0 | xargs -0 gofmt -l -s
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
