@@ -7,9 +7,10 @@ import (
 	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
 )
 
-var _ = Describe("Sst", func() {
+var _ = Describe("Std", func() {
 
 	var mock *mock_timemock.MockClock
 	var mockCtl *gomock.Controller
