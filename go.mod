@@ -1,4 +1,4 @@
-module github.com/elwinar/timemock
+module github.com/BorisBorshevsky/timemock
 
 go 1.14
 

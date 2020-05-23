@@ -12,6 +12,10 @@ func Since(t time.Time) time.Duration {
 	return std.Since(t)
 }
 
+func Until(t time.Time) time.Duration {
+	return std.Until(t)
+}
+
 func Freeze(t time.Time) {
 	std.Freeze(t)
 }

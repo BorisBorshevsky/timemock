@@ -125,4 +125,11 @@ var _ = Describe("clock", func() {
 		})
 	})
 
+	Describe("Until", func() {
+		It("should return that a second will pass", func() {
+			t := time.Now().Add(1 * time.Second)
+			Ω(subject.Until(t)).Should(BeNumerically("~", time.Second, 10*time.Millisecond))
+		})
+	})
+
 })

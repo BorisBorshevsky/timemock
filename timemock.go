@@ -61,6 +61,10 @@ func (c *timemockClock) Since(t time.Time) time.Duration {
 	return c.Now().Sub(t)
 }
 
+func (c *timemockClock) Until(t time.Time) time.Duration {
+	return t.Sub(c.Now())
+}
+
 func (c *timemockClock) Return() {
 	c.rw.Lock()
 	defer c.rw.Unlock()
