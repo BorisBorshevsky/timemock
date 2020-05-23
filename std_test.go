@@ -3,11 +3,10 @@ package timemock
 import (
 	"time"
 
-	"github.com/BorisBorshevsky/timemock/mocks"
+	mock_timemock "github.com/BorisBorshevsky/timemock/internal"
 	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
 )
 
 var _ = Describe("Std", func() {
@@ -36,6 +35,13 @@ var _ = Describe("Std", func() {
 		dur := time.Duration(10)
 		mock.EXPECT().Since(t).Return(dur)
 		Ω(Since(t)).Should(Equal(dur))
+	})
+
+	It("Until run clock.Until", func() {
+		t := time.Now()
+		dur := time.Duration(10)
+		mock.EXPECT().Until(t).Return(dur)
+		Ω(Until(t)).Should(Equal(dur))
 	})
 
 	It("Freeze run clock.Freeze", func() {
